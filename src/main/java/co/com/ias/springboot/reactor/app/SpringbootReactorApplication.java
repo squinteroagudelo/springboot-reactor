@@ -8,11 +8,15 @@ import reactor.core.publisher.Flux;
 @SpringBootApplication
 public class SpringbootReactorApplication implements CommandLineRunner {
 
-	public static void main(String[] args) {
-		SpringApplication.run(SpringbootReactorApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(SpringbootReactorApplication.class, args);
+    }
 
-	@Override
-	public void run(String... args) throws Exception {
-	}
+    @Override
+    public void run(String... args) throws Exception {
+        Flux<String> names = Flux.just("Sam", "Rick", "Andrew", "Tom", "Steve")
+                .doOnNext(System.out::println);
+
+        names.subscribe();
+    }
 }
